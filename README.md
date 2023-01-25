@@ -1,4 +1,4 @@
-# Drum Kit: Vanilla JS
+# Flex Panels Gallery: Vanilla JS
 
 ## Table of Contents
 
@@ -9,11 +9,11 @@
 
 ## Description
 
-Turn the middle row of the keyboard into a drum set with this simple app that listens for keydown events. Created with only Vanilla JavaScript.
+A perfect use of Flexbox to showcase clickable images with short descriptions. Created with only Vanilla JavaScript.
 
 ## Usage
 
-![Drum Kit screenshot 1](./assets/images/drum_kit_screenshot.png)
+![Flex Panels Gallery screenshot 1](./assets/images/flex_panels_gallery_screenshot.png)
 
 ## Credits
 
