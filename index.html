@@ -2,133 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Flex Panels 💪</title>
     <link
       href="https://fonts.googleapis.com/css?family=Amatic+SC"
       rel="stylesheet"
       type="text/css"
     />
+    <link href="./assets/develop/style.css" rel="stylesheet" type="text/css" />
+    <title>Flex Panels</title>
   </head>
   <body>
-    <style>
-      html {
-        box-sizing: border-box;
-        background: #ffc600;
-        font-family: "helvetica neue";
-        font-size: 20px;
-        font-weight: 200;
-      }
-
-      body {
-        margin: 0;
-      }
-
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
-
-      .panels {
-        min-height: 100vh;
-        overflow: hidden;
-        /* changes image panels from vertical to horizontal */
-        display: flex;
-      }
-
-      .panel {
-        background: #6b0f9c;
-        box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
-        color: white;
-        text-align: center;
-        align-items: center;
-        /* Safari transitionend event.propertyName === flex */
-        /* Chrome + FF transitionend event.propertyName === flex-grow */
-        /* this transition allows the words and panels to "animate" bigger, drop down/up the words, etc */
-        transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-          flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
-        font-size: 20px;
-        background-size: cover;
-        background-position: center;
-        /* tells each individual panel (child) to take up all remaining space equally*/
-        flex: 1;
-        /* center words left-to-right */
-        justify-content: center;
-        /* center words top-to-bottom */
-        align-items: center;
-        /* nesting flexbox */
-        display: flex;
-        /* stack words on top of each other instead of written horizontally */
-        flex-direction: column;
-      }
-
-      .panel1 {
-        background-image: url(https://images.unsplash.com/photo-1446038236174-69712e24d137?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fG9jZWFufGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=800&q=60);
-      }
-      .panel2 {
-        background-image: url(https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWR2ZW50dXJlfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=800&q=60);
-      }
-      .panel3 {
-        background-image: url(https://images.unsplash.com/photo-1595960684234-49d2a004e753?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGFkdmVudHVyZXxlbnwwfDF8MHx8&auto=format&fit=crop&w=800&q=60);
-      }
-      .panel4 {
-        background-image: url(https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2t5bGluZXxlbnwwfDF8MHx8&auto=format&fit=crop&w=800&q=60);
-      }
-      .panel5 {
-        background-image: url(https://images.unsplash.com/photo-1499363536502-87642509e31b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGFkdmVudHVyZXxlbnwwfDF8MHx8&auto=format&fit=crop&w=800&q=60);
-      }
-
-      /* Flex Children */
-      .panel > * {
-        margin: 0;
-        width: 100%;
-        transition: transform 0.5s;
-        /* to visualize the border around the words */
-        /* border: 1px solid red; */
-        flex: 1 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* hides the top row of words to eventually animate in upon click */
-      .panel > *:first-child {
-        transform: translateY(-100%);
-      }
-
-      /* hides the bottom row of words to eventually animate in upon click */
-      .panel > *:last-child {
-        transform: translateY(100%);
-      }
-
-      /* by adding the .open-active class, the top and bottom rows of words will animate themselves in */
-      .panel.open-active > *:first-child {
-        transform: translateY(0);
-      }
-
-      .panel.open-active > *:last-child {
-        transform: translateY(0);
-      }
-
-      .panel p {
-        text-transform: uppercase;
-        font-family: "Amatic SC", cursive;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-        font-size: 2em;
-      }
-
-      .panel p:nth-child(2) {
-        font-size: 4em;
-      }
-
-      /* .open class allows the panel to open wider when clicked */
-      .panel.open {
-        font-size: 40px;
-        /* flex: 5 makes the panel take up 5x the amount of room than flex: 1 and therefore it looks like it's opening */
-        flex: 5;
-      }
-    </style>
-
     <div class="panels">
       <div class="panel panel1">
         <p>It's</p>
@@ -157,32 +39,6 @@
       </div>
     </div>
 
-    <script>
-      // js just to add and remove the appropriate classes when it's time
-      // remember that querySelector gives us a node list, not an array (node lists don't have as many array methods available as arrays)
-      const panels = document.querySelectorAll(".panel");
-
-      // write a function to toggle the class of .open (to open the panels wider)
-      function toggleOpen() {
-        this.classList.toggle("open");
-      }
-
-      // write a function to toggle the class of .open-active (to bring in the words once panels are open)
-      function toggleActive(e) {
-        console.log(e);
-        // this.classList.toggle("open-active"); // cannot just have this line because there are multiple transitionend events to account for (see .panel.open css for what transition is ending)
-        if (e.propertyName.includes("flex")) {
-          // some browsers call it "flex", some call it "flex-grow"
-          this.classList.toggle("open-active");
-        }
-      }
-
-      // for each panel, listen for a click event and then fire the toggleOpen() function
-      // don't call toggleOpen() with () bc that would fire the function upon page load
-      panels.forEach((panel) => panel.addEventListener("click", toggleOpen));
-      panels.forEach((panel) =>
-        panel.addEventListener("transitionend", toggleActive)
-      );
-    </script>
+    <script src="./assets/develop/script.js"></script>
   </body>
 </html>
